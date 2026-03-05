@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 5S - Fleximedical/Kure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topbar">
+        <button id="back-btn" class="nav-icon" onclick="voltarPagina()" title="Voltar">←</button>
+        
+        <div class="topbar-center">
+            <img src="static/LogoFlexcolor2.png" class="logo-fixed" alt="Logo">
+            <div class="header-info-mobile">
+                <span>comercial@soukure.com.br</span>
+                <span>(11) 2372-7444</span>
+            </div>
+        </div>
+
+        <button id="info-btn" class="nav-icon" title="O que é 5S?">?</button>
+    </div>
+
+    <div id="modal-5s" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Guia Rápido: Quiz Fleximedical/Kure</h2>
+            <hr>
+            <div class="senso-item"><strong>💡</strong> Esse quiz tem a finalidade de<br>
+            conscientizar a equipe sobre as principais<br>
+        conquistas, projetos e a cultura da empresa.</div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div id="setor-selector" class="container">
+            <h3>Selecione seu Departamento:</h3>
+            <div class="grid-botoes">
+                <button onclick="iniciarQuiz('fabrica')">Fábrica</button>
+                <button onclick="iniciarQuiz('almoxarifado')">Almoxarifado</button>
+                <button onclick="iniciarQuiz('compras')">Compras</button>
+                <button onclick="iniciarQuiz('comercial')">Comercial</button>
+                <button onclick="iniciarQuiz('marketing')">Marketing</button>
+                <button onclick="iniciarQuiz('rh')">RH</button>
+                <button onclick="iniciarQuiz('financeiro')">Financeiro</button>
+                <button onclick="iniciarQuiz('arquitetura')">Arquitetura</button>
+                <button onclick="iniciarQuiz('executivo')">Executivo</button>
+            </div>
+        </div>
+
+        <div id="quiz-container" class="quiz-container hidden">
+            <header>
+                <h1 id="quiz-title">Quiz Fleximedical/Kure</h1>
+                <p>Unidades Móveis de Saúde</p>
+                <div id="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+            </header>
+            <main id="quiz-content">
+                <div id="question-container">
+                    <h2 id="question-text">Carregando pergunta...</h2>
+                    <div id="options-container"></div>
+                </div>
+            </main>
+            <footer id="quiz-footer">
+                <button id="next-btn" class="hidden">Próxima Pergunta</button>
+                <div id="result-container" class="hidden">
+                    <h2>Resultado Final</h2>
+                    <p id="score-text"></p>
+
+                    <button class="btn-final" onclick="enviarParaPlanilha()">Finalizar e Enviar Resultados</button>
+                    <br><br>
+                    <button class="btn-retry" onclick="reiniciarQuiz()">🔄 Tentar Novamente</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

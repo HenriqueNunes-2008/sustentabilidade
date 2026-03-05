@@ -1,0 +1,327 @@
+/* ================= GLOBAL & BACKGROUND ================= */
+:root {
+    --primary: #1e3a8a;     /* Azul escuro institucional */
+    --accent: #0093dd;      /* Azul claro Fleximedical */
+    --secondary: #28a745;   /* Verde sucesso */
+    --white: #ffffff;
+    --text: #333;
+    --gray: #666;
+    --light-bg: #f8f9fa;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    /* Gradiente solicitado */
+    background: linear-gradient(90deg, #0093dd 30%, #5b2fa6);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 130px; /* Espaço para a Topbar fixa */
+    color: var(--text);
+}
+
+/* ================= TOPBAR REFORMULADA ================= */
+.topbar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 110px;
+    background: #ffffff;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 0 0 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.topbar-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 25px;
+}
+
+.logo-fixed {
+    height: 55px;
+    width: auto;
+    transform: scale(2.55);
+    transform-origin: center center;
+}
+
+.header-info-mobile {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    color: var(--primary);
+    margin-top: 5px;
+    margin-right: 22px;
+    text-align: center;
+}
+
+/* Ícones de Navegação (Seta e ?) */
+.nav-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    color: white !important;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    margin-left: 2%;
+}
+
+/* ================= ÍCONE DE INFORMAÇÃO (?) ================= */
+.info-icon {
+    background: var(--accent);
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s, background 0.3s;
+    margin-left: 10px;
+}
+
+.info-icon:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+/* ================= MODAL (POP-UP 5S) ================= */
+.modal {
+    position: fixed;
+    z-index: 200; /* Sempre na frente da Topbar */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); /* Fundo escurecido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.modal-content h2 {
+    color: var(--primary);
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+}
+
+.senso-item {
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 1rem;
+    padding: 10px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border-left: 5px solid var(--accent);
+}
+
+.senso-item strong {
+    color: var(--primary);
+}
+
+/* ================= CONTAINERS DO QUIZ ================= */
+.container, .quiz-container {
+    background: rgba(255, 255, 255, 0.95);
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.grid-botoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* ================= BOTÃ•ES DO QUIZ ================= */
+button {
+    padding: 12px;
+    font-size: 0.95rem;
+    border: 2px solid var(--accent);
+    background: white;
+    color: var(--accent);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; }
+.wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; }
+
+/* ================= BARRA DE PROGRESSO ================= */
+#progress-bar { 
+    width: 100%; 
+    height: 12px; 
+    background: #eee; 
+    border-radius: 6px; 
+    margin: 20px 0; 
+    overflow: hidden; 
+}
+#progress-fill { 
+    height: 100%; 
+    width: 0%; 
+    background: var(--secondary); 
+    transition: 0.4s; 
+}
+
+/* ================= UTILITÁRIOS ================= */
+.hidden { display: none !important; }
+
+/* ================= RESPONSIVIDADE (AJUSTADA) ================= */
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 140px; /* Dar espaço para a topbar maior no celular */
+        background: linear-gradient(180deg, #0093dd 0%, #5b2fa6 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Ajuste da Topbar para empilhar conteúdo */
+    .topbar {
+        height: auto; 
+        padding: 15px 0;
+        border-radius: 0 0 35px 35px;
+    }
+
+    .logo-fixed {
+        position: relative; /* Sai do modo 'flutuante' no celular */
+        transform: scale(1.9);
+        transform-origin: center center;
+        left: 0;
+        top: 0;
+        height: 60px;
+        margin-bottom: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .topbar-content {
+        padding: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header-info {
+        flex-direction: column; /* Telefone e e-mail um embaixo do outro */
+        gap: 5px;
+        text-align: center;
+        margin-right: 0;
+        font-size: 13px;
+    }
+
+    .address { display: none; } /* Remove o endereço longo para limpar o visual */
+
+    /* Ajuste do Botão de Interrogação (?) */
+    .info-icon-fixed {
+        top: 15px;      /* Move para o topo */
+        right: 15px;    /* Canto superior direito */
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        background-color: #0093dd;
+        border: 2px solid white;
+        z-index: 10001; /* Garante que fique acima da topbar branca */
+        margin-right: 2%;
+    }
+
+    /* Containers com margem lateral para não colar na tela */
+    .container, .quiz-container {
+        width: 85%; 
+        max-width: 85%;
+        margin: 0 auto 20px auto;
+        padding: 20px;
+    }
+
+    .grid-botoes {
+        grid-template-columns: 1fr 1fr; /* Mantém 2 colunas organizadas */
+        gap: 12px;
+    }
+}
+
+#back-btn{
+    font-size: 25px;
+}
+
+/* Cor azul para quando o usuário seleciona uma opção */
+.option-btn.selected-blue {
+    background-color: #007bff !important;
+    color: white !important;
+    border-color: #0056b3 !important;
+    transform: scale(0.98);
+}
