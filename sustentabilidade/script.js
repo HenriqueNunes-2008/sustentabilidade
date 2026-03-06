@@ -36,15 +36,15 @@ function voltarPagina() {
 
 // Lógica do Modal de Interrogação
 document.getElementById("info-btn").onclick = () => {
-    document.getElementById("modal-5s").classList.remove("hidden");
+    document.getElementById("modal-doc").classList.remove("hidden");
 };
 
 document.querySelector(".close-btn").onclick = () => {
-    document.getElementById("modal-5s").classList.add("hidden");
+    document.getElementById("modal-doc").classList.add("hidden");
 };
 
 window.onclick = (event) => {
-    const modal = document.getElementById("modal-5s");
+    const modal = document.getElementById("modal-doc");
     if (event.target == modal) {
         modal.classList.add("hidden");
     }
