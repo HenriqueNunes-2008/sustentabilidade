@@ -193,7 +193,7 @@ body {
     margin-top: 20px;
 }
 
-/* ================= BOTÃ•ES DO QUIZ ================= */
+/* ================= BOTÕES DO QUIZ ================= */
 button {
     padding: 12px;
     font-size: 0.95rem;
@@ -324,4 +324,9 @@ button:hover {
     color: white !important;
     border-color: #0056b3 !important;
     transform: scale(0.98);
+}
+
+#info-btn{
+  padding: 1.5%;
+  font-size: 18px;
 }
