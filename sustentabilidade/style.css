@@ -64,7 +64,7 @@ body {
     text-align: center;
 }
 
-/* Ícones de Navegação (Seta e ?) */
+/* Ícones de Navegação (Seta e 📄) */
 .nav-icon {
     width: 40px;
     height: 40px;
@@ -83,7 +83,7 @@ body {
     margin-left: 2%;
 }
 
-/* ================= ÍCONE DE INFORMAÇÃO (?) ================= */
+/* ================= ÍCONE DE DOCUMENTAÇÃO (📄) ================= */
 .info-icon {
     background: var(--accent);
     color: white;
@@ -107,7 +107,7 @@ body {
     transform: scale(1.1);
 }
 
-/* ================= MODAL (POP-UP 5S) ================= */
+/* ================= MODAL (POP-UP DOCUEMNTAÇÃO) ================= */
 .modal {
     position: fixed;
     z-index: 200; /* Sempre na frente da Topbar */
@@ -287,7 +287,7 @@ button:hover {
 
     .address { display: none; } /* Remove o endereço longo para limpar o visual */
 
-    /* Ajuste do Botão de Interrogação (?) */
+    /* Ajuste do Botão de Documentação */
     .info-icon-fixed {
         top: 15px;      /* Move para o topo */
         right: 15px;    /* Canto superior direito */
