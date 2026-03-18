@@ -1,11 +1,18 @@
 // ================= CONFIGURAÇÃO =================
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby5efGi1pmyh7DFCGWPQNtES7a3uuwTC2CaTe8U5IumOR8EjbsNveGOChmT0xVl7zB-wA/exec";
 
-const allQuestions = [
+// 1. Perguntas de Sustentabilidade (Obrigatórias para todos)
+const mandatoryQuestions = [
+    { q: "Qual a importância da sustentabilidade para a Fleximedical?", options: ["Apenas estética", "Redução de impactos ambientais e responsabilidade social", "Aumento de gastos", "Não é prioridade"], answer: 1 },
+    { q: "Como a empresa contribui para a preservação do meio ambiente?", options: ["Descarte irregular", "Uso ineficiente de energia", "Gestão de resíduos e unidades eco-eficientes", "Aumento do uso de plástico"], answer: 2 }
+];
+
+// 2. Banco de Perguntas Gerais
+const generalQuestions = [
     { q: "Qual foi o projeto na Operação dos Desabrigados pelas Chuvas no Rio Grande do Sul?", options: ["Projeto União BR", "Carreta Ipiranga", "Renovation", "CIES"], answer: 0 },
     { q: "Qual foi o Ano de Fundação da Fleximedical?", options: ["2007", "2003", "2006", "2005"], answer: 3 },
     { q: "Qual Numeração da Carreta que mais impactou o Outubro Rosa?", options: ["CDS-31", "CDS-32", "CDS-33"], answer: 1 },
-    { q: "Qual certificado de Sustentabilidade da Empresa ?", options: ["Sistema A", "Sistema B", "Sistema C", "Sistema D"], answer: 1 },
+    { q: "Qual certificado de Sustentabilidade da Empresa ?", options: ["Sistema B", "ISO 9001", "Selo Verde", "Sistema C"], answer: 0 }, // Ajustado para refletir a resposta correta Sistema B
     { q: "Quantas Unidades teve no Projeto das Vítimas do Rio Grande do Sul ? ", options: ["4", "3", "2", "1"], answer: 2 },
     { q: "Qual unidade foi a Primeira Unidade Customizada/Construida ?", options: ["BDS-1", "CDS-1", "TDS-3", "CDS-2"], answer: 0 },
     { q: "Qual o nome do compromisso socioambiental deixado pelo Dr. Roberto Kikawa?", options: ["Empatia", "DNA do Amor", "Inovação", "Bem-Estar e Cidadania"], answer: 1 },
@@ -18,43 +25,18 @@ let currentIdx = 0;
 let setorSelecionado = "";
 let respostasUsuario = [];
 
-// --- FUNÇÕES DE NAVEGAÇÃO DA TOPBAR ---
-function voltarPagina() {
-    const quizContainer = document.getElementById("quiz-container");
-    const setorSelector = document.getElementById("setor-selector");
+// ... (Mantenha as funções de voltarPagina e Modal iguais)
 
-    if (!quizContainer.classList.contains("hidden")) {
-        // Se estiver no meio do quiz, volta para a seleção de setores
-        quizContainer.classList.add("hidden");
-        setorSelector.classList.remove("hidden");
-        document.getElementById("next-btn").classList.add("hidden");
-    } else {
-        // Se já estiver na tela inicial, tenta voltar no histórico
-        window.history.back();
-    }
-}
-
-// Lógica do Modal de Interrogação
-document.getElementById("info-btn").onclick = () => {
-    document.getElementById("modal-doc").classList.remove("hidden");
-};
-
-document.querySelector(".close-btn").onclick = () => {
-    document.getElementById("modal-doc").classList.add("hidden");
-};
-
-window.onclick = (event) => {
-    const modal = document.getElementById("modal-doc");
-    if (event.target == modal) {
-        modal.classList.add("hidden");
-    }
-};
-
-// --- LÓGICA DO QUIZ ---
+// --- LÓGICA DO QUIZ ATUALIZADA ---
 function iniciarQuiz(setor) {
     setorSelecionado = setor;
-    // Seleciona 5 perguntas aleatórias do banco
-    perguntasAtuais = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 5);
+    
+    // Sorteia 3 perguntas do banco geral
+    const sorteadasGerais = [...generalQuestions].sort(() => Math.random() - 0.5).slice(0, 3);
+    
+    // Une as 2 obrigatórias com as 3 sorteadas (Total 5) e embaralha a ordem final
+    perguntasAtuais = [...mandatoryQuestions, ...sorteadasGerais].sort(() => Math.random() - 0.5);
+    
     currentIdx = 0;
     respostasUsuario = [];
 
@@ -64,6 +46,12 @@ function iniciarQuiz(setor) {
     document.getElementById("result-container").classList.add("hidden");
     
     loadQuestion();
+}
+
+// ... (Mantenha as funções loadQuestion, registrarResposta e finalizarQuiz iguais)
+
+function reiniciarQuiz() {
+    location.reload(); // Reinicia para resetar estados e sorteios
 }
 
 function loadQuestion() {
